@@ -16,7 +16,7 @@ const AppRouter = () => {
 
     useEffect(() => {
         const auth = getAuth();
-        onAuthStateChanged( auth, (user) => {
+        onAuthStateChanged(auth, (user) => {
             if (user?.uid) {
                 console.log(user);
                 // Posibilidad de recuperar la info luego de que se recargue la web
@@ -24,7 +24,7 @@ const AppRouter = () => {
             } else {
                 setAuth(false)
             }
-        } )
+        })
     }, [])
 
 
@@ -34,7 +34,7 @@ const AppRouter = () => {
                 {/* Rutas publicas */}
                 <Route path='/login' element={<PublicRouter isAutentication={auth}> <Login /> </PublicRouter>} />
                 <Route path='/register' element={<PublicRouter isAutentication={auth}> <Register /> </PublicRouter>} />
-                
+
                 {/* Rutas privadas */}
                 <Route path='/' element={<PrivateRouter isAutentication={auth}> <Home /> </PrivateRouter>} />
 
